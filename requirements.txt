@@ -1,54 +1,5 @@
-altair==5.1.1
-attrs==23.1.0
-blinker==1.6.2
-cachetools==5.3.1
-certifi==2023.7.22
-cffi==1.16.0
-charset-normalizer==3.3.0
-click==8.1.7
-cryptography==41.0.4
-et-xmlfile==1.1.0
-gitdb==4.0.10
-GitPython==3.1.37
-idna==3.4
-importlib-metadata==6.8.0
-Jinja2==3.1.2
-jsonschema==4.19.1
-jsonschema-specifications==2023.7.1
-markdown-it-py==3.0.0
-MarkupSafe==2.1.3
-mdurl==0.1.2
-numpy==1.26.0
-openpyxl==3.1.2
-packaging==23.2
-pandas==2.1.1
-pdfminer.six==20221105
-pdfplumber==0.10.2
-Pillow==10.0.1
-protobuf==4.24.3
-pyarrow==13.0.0
-pycparser==2.21
-pydeck==0.8.1b0
-Pygments==2.16.1
-PyPDF2==3.0.1
-pypdfium2==4.20.0
-python-dateutil==2.8.2
-pytz==2023.3.post1
-referencing==0.30.2
-requests==2.31.0
-rich==13.6.0
-rpds-py==0.10.3
-six==1.16.0
-smmap==5.0.1
-streamlit==1.27.1
-tenacity==8.2.3
-toml==0.10.2
-toolz==0.12.0
-tornado==6.3.3
-typing_extensions==4.8.0
-tzdata==2023.3
-tzlocal==5.0.1
-urllib3==2.0.6
-validators==0.22.0
-watchdog==3.0.0
-zipp==3.17.0
+# python=3.10                  # Streamlit Cloudでビルド安定（wheelエラー回避に効果大）
+streamlit>=1.28.0,<1.40.0      # Streamlit本体（範囲指定で最新安定版が入る）
+pandas>=2.0.0,<2.3.0           # データフレーム処理
+numpy>=1.24.0,<2.0.0           # 数値計算（pdfplumber内部でも使う可能性あり）
+pdfplumber>=0.10.0,<0.12.0     # PDFテキスト/テーブル抽出の核心（2026年現在0.11.xが安定）
