@@ -6,15 +6,15 @@ import base64
 import numpy as np
 import io  
 import fitz  # pymupdf
+from pypdf2 import PdfReader
 
 def extract_text_from_pdf(pdf_file):
-    doc = fitz.open(stream=pdf_file.read(), filetype="pdf")
+    reader = PdfReader(pdf_file)
     text = ""
-    for page in doc:
-        text += page.get_text()
-    doc.close()
+    for page in reader.pages:
+        text += page.extract_text() + "\n"
     return text
-
+    
 def extract_product_details(line):
     parts = line.strip().split()
     if len(parts) >= 2:
