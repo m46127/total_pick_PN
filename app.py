@@ -5,12 +5,14 @@ import re
 import base64
 import numpy as np
 import io  
+import fitz  # pymupdf
 
-def extract_text_from_pdf(pdf_path):
+def extract_text_from_pdf(pdf_file):
+    doc = fitz.open(stream=pdf_file.read(), filetype="pdf")
     text = ""
-    with pdfplumber.open(pdf_path) as pdf:
-        for page in pdf.pages:
-            text += page.extract_text()
+    for page in doc:
+        text += page.get_text()
+    doc.close()
     return text
 
 def extract_product_details(line):
