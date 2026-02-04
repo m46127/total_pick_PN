@@ -1,5 +1,7 @@
-# python=3.10                  # Streamlit Cloudでビルド安定（wheelエラー回避に効果大）
-streamlit>=1.28.0,<1.40.0      # Streamlit本体（範囲指定で最新安定版が入る）
-pandas>=2.0.0,<2.3.0           # データフレーム処理
-numpy>=1.24.0,<2.0.0           # 数値計算（pdfplumber内部でも使う可能性あり）
-pdfplumber>=0.10.0,<0.12.0     # PDFテキスト/テーブル抽出の核心（2026年現在0.11.xが安定）
+python=3.10  # 先頭に置いてCloudが認識しやすく
+streamlit>=1.28.0,<1.40.0
+pandas>=2.0.0,<2.3.0
+numpy>=1.24.0,<2.0.0
+pdfplumber==0.11.4          # 安定版を固定（0.11.x系がCloudで動作報告多い）
+pillow>=10.0.0,<11.0.0      # pdfplumberの画像処理依存を明示（wheelエラー回避）
+cryptography>=41.0.0,<44.0.0  # pdfminer.six経由の暗号化依存（稀に必要）
