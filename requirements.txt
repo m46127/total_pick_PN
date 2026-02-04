@@ -1,7 +1,7 @@
-# python=3.10  # これでCloudが3.10環境を優先（wheelビルド成功率UP）
+# python=3.10  # これを先頭に（Cloudが3.10を優先）
 streamlit>=1.28.0,<1.40.0
 pandas>=2.0.0,<2.3.0
 numpy>=1.24.0,<2.0.0
-pdfplumber==0.11.4  # 固定版で安定（0.11.x系がCloudで動作報告最多）
-pillow>=10.0.0,<11.0.0  # pdfplumberの画像処理依存を明示（必須追加）
-cryptography>=41.0.0,<44.0.0  # pdfminer経由の暗号化依存（輪ビルドエラー回避に効果大）
+pdfplumber==0.11.4  # 固定版（Cloudで動作報告が多い安定版）
+pillow>=10.0.0,<11.0.0  # pdfplumberの画像依存を明示（必須！）
+cryptography>=41.0.0,<44.0.0  # pdfminer経由の暗号化依存（wheelエラー回避に超重要）
