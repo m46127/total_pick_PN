@@ -1,11 +1,9 @@
 import streamlit as st
 import pandas as pd
-import pdfplumber
 import re
 import base64
 import numpy as np
-import io  
-import fitz  # pymupdf
+import io
 from pypdf2 import PdfReader
 
 def extract_text_from_pdf(pdf_file):
