@@ -12,7 +12,7 @@ def extract_text_from_pdf(pdf_file):
     for page in reader.pages:
         text += page.extract_text() + "\n"
     return text
-    
+
 def extract_product_details(line):
     parts = line.strip().split()
     if len(parts) >= 2:
@@ -54,5 +54,5 @@ if uploaded_file_pdf is not None and uploaded_file_excel is not None:
     with pd.ExcelWriter(output, engine='openpyxl') as writer:
         merged_df.to_excel(writer, sheet_name='Sheet1', index=False)
     
-    binary_excel = output.getvalue()  
+    binary_excel = output.getvalue()
     st.markdown(get_binary_file_downloader_html(binary_excel, 'Merged_YourFileNameHere.xlsx'), unsafe_allow_html=True)
