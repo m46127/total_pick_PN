@@ -1,16 +1,16 @@
 import streamlit as st
 import pandas as pd
-import pdfplumber
 import re
 import base64
 import numpy as np
-import io  
+import io
+from pypdf2 import PdfReader
 
-def extract_text_from_pdf(pdf_path):
+def extract_text_from_pdf(pdf_file):
+    reader = PdfReader(pdf_file)
     text = ""
-    with pdfplumber.open(pdf_path) as pdf:
-        for page in pdf.pages:
-            text += page.extract_text()
+    for page in reader.pages:
+        text += page.extract_text() + "\n"
     return text
 
 def extract_product_details(line):
