@@ -1,16 +1,16 @@
 import streamlit as st
 import pandas as pd
+import pdfplumber
 import re
 import base64
 import numpy as np
-import io
-from pypdf2 import PdfReader
+import io  
 
-def extract_text_from_pdf(pdf_file):
-    reader = PdfReader(pdf_file)
+def extract_text_from_pdf(pdf_path):
     text = ""
-    for page in reader.pages:
-        text += page.extract_text() + "\n"
+    with pdfplumber.open(pdf_path) as pdf:
+        for page in pdf.pages:
+            text += page.extract_text()
     return text
 
 def extract_product_details(line):
@@ -54,5 +54,5 @@ if uploaded_file_pdf is not None and uploaded_file_excel is not None:
     with pd.ExcelWriter(output, engine='openpyxl') as writer:
         merged_df.to_excel(writer, sheet_name='Sheet1', index=False)
     
-    binary_excel = output.getvalue()
+    binary_excel = output.getvalue()  
     st.markdown(get_binary_file_downloader_html(binary_excel, 'Merged_YourFileNameHere.xlsx'), unsafe_allow_html=True)
