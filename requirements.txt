@@ -1,6 +1,6 @@
 # python=3.10
-streamlit==1.38.0
-pandas==2.2.2
-numpy==1.26.4
-openpyxl==3.1.5
-pypdf2==3.0.1
+streamlit
+pandas
+numpy
+openpyxl
+pypdf2
